@@ -15,8 +15,7 @@ app.get("/dog/api/random", (req, res) => {
   axios
     .get("https://dog.ceo/api/breeds/image/random")
     .then((result) => {
-      console.log(result.data.message);
-      res.status(200).json(result.message);
+      res.status(200).json(result.data.message);
     })
     .catch((err) => console.log("Axios Error: " + err));
 });

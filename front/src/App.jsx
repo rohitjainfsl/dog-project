@@ -1,20 +1,18 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import Breed from "./Breed";
+import Header from "./Header";
 
 function App() {
-  const [dogData, setDogData] = useState('');
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8001/dog/api/random")
-      .then((result) => setDogData(JSON.parse(result.data.message)))
-      .catch((err) => console.log(err));
-  }, []);
-
   return (
-    <>
-      <img src={dogData} alt="Random Dog Image" />
-    </>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/breed" element={<Breed />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
